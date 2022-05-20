@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ListingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::controller(ListingController::class)->group(function() {
+    Route::get('/listings', 'index');
+    Route::get('/listings/create', 'create');
+});
+// Route::get('/listings', [ListingController::class, 'index']);
